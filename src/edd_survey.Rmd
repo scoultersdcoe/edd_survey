@@ -1,0 +1,72 @@
+---
+title: "State of Disproportionality"
+subtitle: "Understanding Policies and Procedures across Organizations"
+author: "Shannon Coulter"
+date: "November 21, 2021"
+output:
+  html_document:
+    theme: readable
+    highlight: espresso
+    #toc: true
+    #toc_float: true
+---
+
+```{r rmarkdown-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(dev = "cairo_pdf")
+options(knitr.kable.NA = "")
+options(kableExtra.latex.load_packages = FALSE)
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(here)
+library(gtsummary)
+library(gt)
+```
+
+
+## State of Disproportionality {.tabset .tabset-fade .tabset-pills}
+ 
+### Survey Overview
+
+We administered the State of Disproportionality Survey to special education directors across California to gather information about disproportionality and the work districts engage in to reduce it. The South County SELPA, one of four SELPA Content Leads for the State of California, designed this survey as part of a state grant to address disproportionality. The survey intends to capture the "state" of disproportionality in each of California's 1,390 school districts by asking questions about experiences regarding special education data, culture, general education processes and policies, training, system of support, resources, and others. We also captured demographic characteristics for individuals completing the survey.
+
+```{r}
+# who took the survey
+# demographic breakdown
+```
+
+### Disproportionality Knowledge
+
+The following section of the survey highlights the section on disproportionality knowledge.
+
+```{r }
+```
+
+### General Education Practices
+
+The following section of the survey highlights the section on general education processes and procedures. The questions relate to the general education processes leading to a referral to special education and the extent to which these processes are implemented well in the district. We arrayed the results by statement and organization.
+
+```{r child="sections/general_education.Rmd"}
+```
+
+### Mutli-tiered System of Supports
+
+The following section of the survey highlights the section on MTSS processes and procedures.
+
+```{r child="sections/mtss.Rmd"}
+```
+
+### Disproportionality Practices, Resources, and Supports
+
+The following section of the survey highlights the section on disproportionality practices, resources, processes and procedures, and supports.
+
+```{r child="sections/dispro_practices.Rmd"}
+```
+
+### Findings and Conclusions
+
+The following section of the survey highlights the section on disproportionality practices, resources, processes and procedures, and supports.

@@ -1,0 +1,47 @@
+---
+title: "MTSS"
+author: "Shannon Coulter"
+date: "11/21/2021"
+output: html_document
+---
+```{r setup-dispro, include=FALSE}
+knitr::opts_chunk$set(fig.retina = 3, fig.align = "center")
+```
+
+```{r load-libraries-data-dispro, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(broom)
+library(janitor)
+library(here)
+library(ggthemes)
+library(kableExtra)
+library(gtsummary)
+library(gt)
+library(survey)
+```
+
+```{r load-data-dispro, echo=FALSE, message=FALSE, warning=FALSE}
+# Load data created in ED&D survey folder
+results_3_dispro <- readRDS(file = here('../ED&D/Survey/output/results_3_dispro.rds'))
+```
+
+```{r dispro-results, echo=FALSE, message=FALSE, warning=FALSE}
+dispro_tabl <- results_3_dispro %>% 
+  tbl_summary(by = condition,
+              missing = "no") %>%
+  bold_labels() %>%
+  modify_spanning_header(all_stat_cols() ~ "**Organizations**") %>%
+  modify_header(update = list(
+    label ~ "**Statement**",
+    stat_1 ~ "**ED&D**, N = 23",
+    stat_2 ~ "**SILS**, N = 70",
+    stat_3 ~ "**SIP**, N = 35",
+    stat_4 ~ "**SPP-TAP**, N = 52"))
+
+as_gt(dispro_tabl) %>%
+  tab_style(
+    style = list(cell_fill(color = "lightblue")),
+    locations = cells_body(
+      columns =  stat_1)
+    )
+```
