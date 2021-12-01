@@ -1,0 +1,36 @@
+---
+title: "Demographics"
+author: "Shannon Coulter"
+date: "11/21/2021"
+output: html_document
+---
+```{r setup-demo, include=FALSE}
+knitr::opts_chunk$set(fig.retina = 6, fig.align = "center")
+```
+
+```{r load-libraries-demo, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(here)
+library(ggthemes)
+```
+
+```{r load-results_2, echo=FALSE, message=FALSE, warning=FALSE}
+# Load data created in ED&D survey folder
+results_2 <- readRDS(file = here('../ED&D/Survey/output/results_2.rds'))
+```
+
+```{r demographics, echo=FALSE, message=FALSE, warning=FALSE}
+demo <- results_2 %>% select(condition) %>%
+  group_by(condition) %>%
+  summarize(counts = n()) %>%
+  arrange(counts) %>%
+  ggplot(mapping = aes(x = reorder(condition, -counts), y = counts,
+                       fill = condition)) +
+  geom_col() +
+  scale_fill_manual(values = c("grey", "dodgerblue2", "grey", "grey", "grey", "grey", "grey", "grey", "grey", "grey")) +
+  labs(title = "Participants working with different organizations",
+       x = NULL, y = "Number of people") + 
+  theme_fivethirtyeight() +
+  theme(legend.position = "none") 
+demo
+```

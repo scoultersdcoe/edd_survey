@@ -1,27 +1,27 @@
 ---
-title: "MTSS"
+title: "Knowledge"
 author: "Shannon Coulter"
 date: "11/21/2021"
 output: html_document
 ---
-```{r setup-mtss, include=FALSE}
-knitr::opts_chunk$set(fig.retina = 3, fig.align = "center")
+```{r setup-know, include=FALSE}
+knitr::opts_chunk$set(fig.retina = 6, fig.align = "center")
 ```
 
-```{r load-libraries-mtss, message=FALSE, warning=FALSE, include=FALSE}
+```{r load-libraries-know, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(here)
-library(gtsummary)
 library(gt)
+library(gtsummary)
 ```
 
-```{r load-data-mtss, echo=FALSE, message=FALSE, warning=FALSE}
+```{r load-know, echo=FALSE, message=FALSE, warning=FALSE}
 # Load data created in ED&D survey folder
-results_3_mtss <- readRDS(file = here('../ED&D/Survey/output/results_3_mtss.rds'))
+results_3_knowledge <- readRDS(file = here('../ED&D/Survey/output/results_3_knowledge.rds'))
 ```
 
-```{r mtss-results, echo=FALSE, message=FALSE, warning=FALSE}
-mtss_tabl <- results_3_mtss %>% 
+```{r knowledge, echo=FALSE, message=FALSE, warning=FALSE}
+know_tabl <- results_3_knowledge %>% 
   tbl_summary(by = condition,
               missing = "no") %>%
   bold_labels() %>%
@@ -33,7 +33,7 @@ mtss_tabl <- results_3_mtss %>%
     stat_3 ~ "**SIP**, N = 35",
     stat_4 ~ "**SPP-TAP**, N = 52"))
 
-as_gt(mtss_tabl) %>%
+as_gt(know_tabl) %>%
   tab_style(
     style = list(cell_fill(color = "dodgerblue2")),
     locations = cells_body(
